@@ -1,0 +1,40 @@
+# Python Virtual Environment & Bytecode
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.tmp
+
+# University MTE / Non-Project Scratch Files
+MTE/
+mte/
+mte_guidelines_extracted.txt
+build_full_reports.py
+generate_high_end_ppt.py
+generate_markdown_reports.py
+generate_pdf_documents.py
+generate_progress_reports.py
+antigravity skills.txt
+PS CCropGuard v3 epoch metadata.txt
+check_img.py
+test_link.py
+
+# Large Model Weights (>1.2 GB per checkpoint - exceeds GitHub 100MB limit)
+checkpoints/**/*.pt
+# Keep the lightweight 706 KB validation/test logits cache & training history
+!checkpoints/dinov2_lora/logits_cache.pt
+!checkpoints/dinov2_lora/training_history.jsonl
+
+# Raw Image Datasets (9.75 GB / 184,000+ images)
+plantvillage dataset/
+augmented_plantdoc/train/
+augmented_plantdoc/val/
+augmented_plantdoc/test/
+augmented_plantdoc_clean/train/
+augmented_plantdoc_clean/val/
+augmented_plantdoc_clean/test/
+
+# Keep Dataset Audit Reports & Visualizations
+!augmented_plantdoc/augmentation_report.json
+!augmented_plantdoc/augmentation_visualization.png
+!augmented_plantdoc_clean/sanitization_report.json

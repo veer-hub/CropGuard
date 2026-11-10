@@ -1,0 +1,805 @@
+{
+  "model": "DINOv2-Large + LoRA (r=16, alpha=32) + MAF Pooling",
+  "method": "Path-Integral Integrated Gradients + MAF Pathology Attribution",
+  "ig_steps": 8,
+  "num_evaluated_samples": 108,
+  "num_classes": 27,
+  "target_threshold": 0.8,
+  "target_met": true,
+  "mean_lrr": 0.858707,
+  "median_lrr": 0.918807,
+  "std_lrr": 0.15443,
+  "min_lrr": 0.323836,
+  "max_lrr": 0.996893,
+  "p25_lrr": 0.816252,
+  "p75_lrr": 0.964582,
+  "fraction_above_080": 0.787037,
+  "baseline_unpooled_mean_lrr": 0.514766,
+  "per_class_mean_lrr": {
+    "Apple Scab Leaf": 0.825445,
+    "Apple leaf": 0.717934,
+    "Apple rust leaf": 0.709815,
+    "Bell_pepper leaf": 0.84452,
+    "Bell_pepper leaf spot": 0.916297,
+    "Blueberry leaf": 0.846979,
+    "Cherry leaf": 0.933102,
+    "Corn Gray leaf spot": 0.919653,
+    "Corn leaf blight": 0.802746,
+    "Corn rust leaf": 0.954369,
+    "Peach leaf": 0.85427,
+    "Potato leaf early blight": 0.751422,
+    "Potato leaf late blight": 0.875067,
+    "Raspberry leaf": 0.846831,
+    "Soyabean leaf": 0.970679,
+    "Squash Powdery mildew leaf": 0.700148,
+    "Strawberry leaf": 0.967258,
+    "Tomato Early blight leaf": 0.724182,
+    "Tomato Septoria leaf spot": 0.81444,
+    "Tomato leaf": 0.882264,
+    "Tomato leaf bacterial spot": 0.782221,
+    "Tomato leaf late blight": 0.773047,
+    "Tomato leaf mosaic virus": 0.983034,
+    "Tomato leaf yellow virus": 0.94209,
+    "Tomato mold leaf": 0.931815,
+    "grape leaf": 0.973154,
+    "grape leaf black rot": 0.942294
+  },
+  "samples": [
+    {
+      "sample_index": 0,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple Scab Leaf\\Apple Scab Leaf (14).jpg",
+      "class_name": "Apple Scab Leaf",
+      "lrr": 0.980968,
+      "baseline_lrr": 0.41959
+    },
+    {
+      "sample_index": 4,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple Scab Leaf\\Apple Scab Leaf (22).jpg",
+      "class_name": "Apple Scab Leaf",
+      "lrr": 0.977462,
+      "baseline_lrr": 0.394589
+    },
+    {
+      "sample_index": 10,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple Scab Leaf\\Apple Scab Leaf (24).jpg",
+      "class_name": "Apple Scab Leaf",
+      "lrr": 0.557943,
+      "baseline_lrr": 0.468391
+    },
+    {
+      "sample_index": 16,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple Scab Leaf\\Apple Scab Leaf (26).jpg",
+      "class_name": "Apple Scab Leaf",
+      "lrr": 0.785407,
+      "baseline_lrr": 0.682697
+    },
+    {
+      "sample_index": 58,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple leaf\\Apple leaf (10).jpg",
+      "class_name": "Apple leaf",
+      "lrr": 0.805504,
+      "baseline_lrr": 0.251116
+    },
+    {
+      "sample_index": 61,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple leaf\\Apple leaf (20).jpg",
+      "class_name": "Apple leaf",
+      "lrr": 0.815486,
+      "baseline_lrr": 0.583057
+    },
+    {
+      "sample_index": 65,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple leaf\\Apple leaf (22).jpg",
+      "class_name": "Apple leaf",
+      "lrr": 0.323836,
+      "baseline_lrr": 0.575151
+    },
+    {
+      "sample_index": 70,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple leaf\\Apple leaf (26).jpg",
+      "class_name": "Apple leaf",
+      "lrr": 0.926908,
+      "baseline_lrr": 0.189969
+    },
+    {
+      "sample_index": 103,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple rust leaf\\Apple rust leaf (14).jpg",
+      "class_name": "Apple rust leaf",
+      "lrr": 0.835633,
+      "baseline_lrr": 0.527389
+    },
+    {
+      "sample_index": 110,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple rust leaf\\Apple rust leaf (22).jpg",
+      "class_name": "Apple rust leaf",
+      "lrr": 0.871676,
+      "baseline_lrr": 0.718862
+    },
+    {
+      "sample_index": 117,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple rust leaf\\Apple rust leaf (24).jpg",
+      "class_name": "Apple rust leaf",
+      "lrr": 0.34486,
+      "baseline_lrr": 0.516766
+    },
+    {
+      "sample_index": 122,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Apple rust leaf\\Apple rust leaf (26).jpg",
+      "class_name": "Apple rust leaf",
+      "lrr": 0.787089,
+      "baseline_lrr": 0.446528
+    },
+    {
+      "sample_index": 165,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf\\Bell_pepper leaf (21).jpg",
+      "class_name": "Bell_pepper leaf",
+      "lrr": 0.648694,
+      "baseline_lrr": 0.668362
+    },
+    {
+      "sample_index": 179,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf\\Bell_pepper leaf (22).jpg",
+      "class_name": "Bell_pepper leaf",
+      "lrr": 0.967552,
+      "baseline_lrr": 0.430682
+    },
+    {
+      "sample_index": 191,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf\\Bell_pepper leaf (34).jpg",
+      "class_name": "Bell_pepper leaf",
+      "lrr": 0.884953,
+      "baseline_lrr": 0.880603
+    },
+    {
+      "sample_index": 204,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf\\Bell_pepper leaf (4).jpg",
+      "class_name": "Bell_pepper leaf",
+      "lrr": 0.87688,
+      "baseline_lrr": 0.437615
+    },
+    {
+      "sample_index": 227,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf spot\\Bell_pepper leaf spot (14).jpg",
+      "class_name": "Bell_pepper leaf spot",
+      "lrr": 0.98586,
+      "baseline_lrr": 0.392114
+    },
+    {
+      "sample_index": 231,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf spot\\Bell_pepper leaf spot (20).jpg",
+      "class_name": "Bell_pepper leaf spot",
+      "lrr": 0.98926,
+      "baseline_lrr": 0.62346
+    },
+    {
+      "sample_index": 237,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf spot\\Bell_pepper leaf spot (26).jpg",
+      "class_name": "Bell_pepper leaf spot",
+      "lrr": 0.902468,
+      "baseline_lrr": 0.309388
+    },
+    {
+      "sample_index": 243,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Bell_pepper leaf spot\\Bell_pepper leaf spot (28).jpg",
+      "class_name": "Bell_pepper leaf spot",
+      "lrr": 0.787599,
+      "baseline_lrr": 0.653177
+    },
+    {
+      "sample_index": 286,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Blueberry leaf\\Blueberry leaf (1).jpg",
+      "class_name": "Blueberry leaf",
+      "lrr": 0.761246,
+      "baseline_lrr": 0.540441
+    },
+    {
+      "sample_index": 291,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Blueberry leaf\\Blueberry leaf (101).jpg",
+      "class_name": "Blueberry leaf",
+      "lrr": 0.748459,
+      "baseline_lrr": 0.626319
+    },
+    {
+      "sample_index": 294,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Blueberry leaf\\Blueberry leaf (103).jpg",
+      "class_name": "Blueberry leaf",
+      "lrr": 0.959183,
+      "baseline_lrr": 0.679052
+    },
+    {
+      "sample_index": 298,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Blueberry leaf\\Blueberry leaf (13).jpg",
+      "class_name": "Blueberry leaf",
+      "lrr": 0.919029,
+      "baseline_lrr": 0.808899
+    },
+    {
+      "sample_index": 343,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Cherry leaf\\Cherry leaf (2).jpg",
+      "class_name": "Cherry leaf",
+      "lrr": 0.993954,
+      "baseline_lrr": 0.143246
+    },
+    {
+      "sample_index": 352,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Cherry leaf\\Cherry leaf (20).jpg",
+      "class_name": "Cherry leaf",
+      "lrr": 0.982162,
+      "baseline_lrr": 0.533072
+    },
+    {
+      "sample_index": 364,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Cherry leaf\\Cherry leaf (26).jpg",
+      "class_name": "Cherry leaf",
+      "lrr": 0.889857,
+      "baseline_lrr": 0.442696
+    },
+    {
+      "sample_index": 373,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Cherry leaf\\Cherry leaf (27).jpg",
+      "class_name": "Cherry leaf",
+      "lrr": 0.866435,
+      "baseline_lrr": 0.655653
+    },
+    {
+      "sample_index": 414,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn Gray leaf spot\\Corn Gray leaf spot (14).jpg",
+      "class_name": "Corn Gray leaf spot",
+      "lrr": 0.918586,
+      "baseline_lrr": 0.493239
+    },
+    {
+      "sample_index": 422,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn Gray leaf spot\\Corn Gray leaf spot (20).jpg",
+      "class_name": "Corn Gray leaf spot",
+      "lrr": 0.961699,
+      "baseline_lrr": 0.411034
+    },
+    {
+      "sample_index": 431,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn Gray leaf spot\\Corn Gray leaf spot (26).jpg",
+      "class_name": "Corn Gray leaf spot",
+      "lrr": 0.941439,
+      "baseline_lrr": 0.441051
+    },
+    {
+      "sample_index": 439,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn Gray leaf spot\\Corn Gray leaf spot (28).jpg",
+      "class_name": "Corn Gray leaf spot",
+      "lrr": 0.856889,
+      "baseline_lrr": 0.593547
+    },
+    {
+      "sample_index": 477,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn leaf blight\\Corn leaf blight (122).jpg",
+      "class_name": "Corn leaf blight",
+      "lrr": 0.974375,
+      "baseline_lrr": 0.554558
+    },
+    {
+      "sample_index": 479,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn leaf blight\\Corn leaf blight (127).jpg",
+      "class_name": "Corn leaf blight",
+      "lrr": 0.578033,
+      "baseline_lrr": 0.357396
+    },
+    {
+      "sample_index": 481,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn leaf blight\\Corn leaf blight (130).jpg",
+      "class_name": "Corn leaf blight",
+      "lrr": 0.747683,
+      "baseline_lrr": 0.536356
+    },
+    {
+      "sample_index": 483,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn leaf blight\\Corn leaf blight (131).jpg",
+      "class_name": "Corn leaf blight",
+      "lrr": 0.910895,
+      "baseline_lrr": 0.55304
+    },
+    {
+      "sample_index": 545,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn rust leaf\\Corn rust leaf (1).jpg",
+      "class_name": "Corn rust leaf",
+      "lrr": 0.980079,
+      "baseline_lrr": 0.593795
+    },
+    {
+      "sample_index": 549,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn rust leaf\\Corn rust leaf (101).jpg",
+      "class_name": "Corn rust leaf",
+      "lrr": 0.960278,
+      "baseline_lrr": 0.665653
+    },
+    {
+      "sample_index": 551,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn rust leaf\\Corn rust leaf (103).jpg",
+      "class_name": "Corn rust leaf",
+      "lrr": 0.924724,
+      "baseline_lrr": 0.394057
+    },
+    {
+      "sample_index": 555,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Corn rust leaf\\Corn rust leaf (12).jpg",
+      "class_name": "Corn rust leaf",
+      "lrr": 0.952395,
+      "baseline_lrr": 0.546523
+    },
+    {
+      "sample_index": 604,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Peach leaf\\Peach leaf (1).jpg",
+      "class_name": "Peach leaf",
+      "lrr": 0.867579,
+      "baseline_lrr": 0.633564
+    },
+    {
+      "sample_index": 608,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Peach leaf\\Peach leaf (17).jpg",
+      "class_name": "Peach leaf",
+      "lrr": 0.961905,
+      "baseline_lrr": 0.367478
+    },
+    {
+      "sample_index": 614,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Peach leaf\\Peach leaf (19).jpg",
+      "class_name": "Peach leaf",
+      "lrr": 0.834708,
+      "baseline_lrr": 0.55404
+    },
+    {
+      "sample_index": 621,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Peach leaf\\Peach leaf (34).jpg",
+      "class_name": "Peach leaf",
+      "lrr": 0.752889,
+      "baseline_lrr": 0.524951
+    },
+    {
+      "sample_index": 652,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf early blight\\Potato leaf early blight (1).jpg",
+      "class_name": "Potato leaf early blight",
+      "lrr": 0.446692,
+      "baseline_lrr": 0.337651
+    },
+    {
+      "sample_index": 657,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf early blight\\Potato leaf early blight (10).jpg",
+      "class_name": "Potato leaf early blight",
+      "lrr": 0.64406,
+      "baseline_lrr": 0.508801
+    },
+    {
+      "sample_index": 658,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf early blight\\Potato leaf early blight (101).jpg",
+      "class_name": "Potato leaf early blight",
+      "lrr": 0.935167,
+      "baseline_lrr": 0.410669
+    },
+    {
+      "sample_index": 661,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf early blight\\Potato leaf early blight (103).jpg",
+      "class_name": "Potato leaf early blight",
+      "lrr": 0.979767,
+      "baseline_lrr": 0.580572
+    },
+    {
+      "sample_index": 705,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf late blight\\Potato leaf late blight (1).jpg",
+      "class_name": "Potato leaf late blight",
+      "lrr": 0.877194,
+      "baseline_lrr": 0.582438
+    },
+    {
+      "sample_index": 710,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf late blight\\Potato leaf late blight (14).jpg",
+      "class_name": "Potato leaf late blight",
+      "lrr": 0.985397,
+      "baseline_lrr": 0.46244
+    },
+    {
+      "sample_index": 713,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf late blight\\Potato leaf late blight (20).jpg",
+      "class_name": "Potato leaf late blight",
+      "lrr": 0.810167,
+      "baseline_lrr": 0.64717
+    },
+    {
+      "sample_index": 718,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Potato leaf late blight\\Potato leaf late blight (22).jpg",
+      "class_name": "Potato leaf late blight",
+      "lrr": 0.827512,
+      "baseline_lrr": 0.489259
+    },
+    {
+      "sample_index": 761,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Raspberry leaf\\Raspberry leaf (1).jpg",
+      "class_name": "Raspberry leaf",
+      "lrr": 0.460652,
+      "baseline_lrr": 0.566186
+    },
+    {
+      "sample_index": 766,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Raspberry leaf\\Raspberry leaf (10).jpg",
+      "class_name": "Raspberry leaf",
+      "lrr": 0.996825,
+      "baseline_lrr": 0.493175
+    },
+    {
+      "sample_index": 767,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Raspberry leaf\\Raspberry leaf (10)1.jpg",
+      "class_name": "Raspberry leaf",
+      "lrr": 0.993138,
+      "baseline_lrr": 0.422636
+    },
+    {
+      "sample_index": 771,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Raspberry leaf\\Raspberry leaf (101).jpg",
+      "class_name": "Raspberry leaf",
+      "lrr": 0.936708,
+      "baseline_lrr": 0.580816
+    },
+    {
+      "sample_index": 826,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Soyabean leaf\\Soyabean leaf (21).jpg",
+      "class_name": "Soyabean leaf",
+      "lrr": 0.977537,
+      "baseline_lrr": 0.540097
+    },
+    {
+      "sample_index": 833,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Soyabean leaf\\Soyabean leaf (22).jpg",
+      "class_name": "Soyabean leaf",
+      "lrr": 0.967148,
+      "baseline_lrr": 0.582963
+    },
+    {
+      "sample_index": 839,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Soyabean leaf\\Soyabean leaf (31).jpg",
+      "class_name": "Soyabean leaf",
+      "lrr": 0.996865,
+      "baseline_lrr": 0.646515
+    },
+    {
+      "sample_index": 840,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Soyabean leaf\\Soyabean leaf (31)1.jpg",
+      "class_name": "Soyabean leaf",
+      "lrr": 0.941165,
+      "baseline_lrr": 0.510855
+    },
+    {
+      "sample_index": 891,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Squash Powdery mildew leaf\\Squash Powdery mildew leaf (1).jpg",
+      "class_name": "Squash Powdery mildew leaf",
+      "lrr": 0.816247,
+      "baseline_lrr": 0.660025
+    },
+    {
+      "sample_index": 894,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Squash Powdery mildew leaf\\Squash Powdery mildew leaf (101).jpg",
+      "class_name": "Squash Powdery mildew leaf",
+      "lrr": 0.67514,
+      "baseline_lrr": 0.517159
+    },
+    {
+      "sample_index": 898,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Squash Powdery mildew leaf\\Squash Powdery mildew leaf (103).jpg",
+      "class_name": "Squash Powdery mildew leaf",
+      "lrr": 0.861183,
+      "baseline_lrr": 0.400762
+    },
+    {
+      "sample_index": 902,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Squash Powdery mildew leaf\\Squash Powdery mildew leaf (108).jpg",
+      "class_name": "Squash Powdery mildew leaf",
+      "lrr": 0.448023,
+      "baseline_lrr": 0.533909
+    },
+    {
+      "sample_index": 948,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Strawberry leaf\\Strawberry leaf (1).jpg",
+      "class_name": "Strawberry leaf",
+      "lrr": 0.993117,
+      "baseline_lrr": 0.754835
+    },
+    {
+      "sample_index": 951,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Strawberry leaf\\Strawberry leaf (20).jpg",
+      "class_name": "Strawberry leaf",
+      "lrr": 0.972983,
+      "baseline_lrr": 0.019395
+    },
+    {
+      "sample_index": 953,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Strawberry leaf\\Strawberry leaf (22).jpg",
+      "class_name": "Strawberry leaf",
+      "lrr": 0.952815,
+      "baseline_lrr": 0.317184
+    },
+    {
+      "sample_index": 966,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Strawberry leaf\\Strawberry leaf (25).jpg",
+      "class_name": "Strawberry leaf",
+      "lrr": 0.950116,
+      "baseline_lrr": 0.365875
+    },
+    {
+      "sample_index": 1010,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Early blight leaf\\Tomato Early blight leaf (14).jpg",
+      "class_name": "Tomato Early blight leaf",
+      "lrr": 0.423827,
+      "baseline_lrr": 0.21742
+    },
+    {
+      "sample_index": 1015,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Early blight leaf\\Tomato Early blight leaf (22).jpg",
+      "class_name": "Tomato Early blight leaf",
+      "lrr": 0.63844,
+      "baseline_lrr": 0.590206
+    },
+    {
+      "sample_index": 1021,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Early blight leaf\\Tomato Early blight leaf (24).jpg",
+      "class_name": "Tomato Early blight leaf",
+      "lrr": 0.897938,
+      "baseline_lrr": 0.522969
+    },
+    {
+      "sample_index": 1024,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Early blight leaf\\Tomato Early blight leaf (26).jpg",
+      "class_name": "Tomato Early blight leaf",
+      "lrr": 0.936523,
+      "baseline_lrr": 0.53822
+    },
+    {
+      "sample_index": 1069,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Septoria leaf spot\\Tomato Septoria leaf spot (1).jpg",
+      "class_name": "Tomato Septoria leaf spot",
+      "lrr": 0.932814,
+      "baseline_lrr": 0.441264
+    },
+    {
+      "sample_index": 1075,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Septoria leaf spot\\Tomato Septoria leaf spot (101).jpg",
+      "class_name": "Tomato Septoria leaf spot",
+      "lrr": 0.615988,
+      "baseline_lrr": 0.609731
+    },
+    {
+      "sample_index": 1078,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Septoria leaf spot\\Tomato Septoria leaf spot (103).jpg",
+      "class_name": "Tomato Septoria leaf spot",
+      "lrr": 0.910406,
+      "baseline_lrr": 0.608896
+    },
+    {
+      "sample_index": 1082,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato Septoria leaf spot\\Tomato Septoria leaf spot (108).jpg",
+      "class_name": "Tomato Septoria leaf spot",
+      "lrr": 0.798553,
+      "baseline_lrr": 0.562245
+    },
+    {
+      "sample_index": 1136,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf\\Tomato leaf (21).jpg",
+      "class_name": "Tomato leaf",
+      "lrr": 0.849561,
+      "baseline_lrr": 0.259981
+    },
+    {
+      "sample_index": 1145,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf\\Tomato leaf (22).jpg",
+      "class_name": "Tomato leaf",
+      "lrr": 0.816254,
+      "baseline_lrr": 0.604202
+    },
+    {
+      "sample_index": 1152,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf\\Tomato leaf (34).jpg",
+      "class_name": "Tomato leaf",
+      "lrr": 0.947826,
+      "baseline_lrr": 0.635066
+    },
+    {
+      "sample_index": 1162,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf\\Tomato leaf (36).jpg",
+      "class_name": "Tomato leaf",
+      "lrr": 0.915413,
+      "baseline_lrr": 0.683606
+    },
+    {
+      "sample_index": 1204,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf bacterial spot\\Tomato leaf bacterial spot (1).jpg",
+      "class_name": "Tomato leaf bacterial spot",
+      "lrr": 0.839482,
+      "baseline_lrr": 0.434702
+    },
+    {
+      "sample_index": 1208,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf bacterial spot\\Tomato leaf bacterial spot (14).jpg",
+      "class_name": "Tomato leaf bacterial spot",
+      "lrr": 0.874412,
+      "baseline_lrr": 0.595937
+    },
+    {
+      "sample_index": 1213,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf bacterial spot\\Tomato leaf bacterial spot (20).jpg",
+      "class_name": "Tomato leaf bacterial spot",
+      "lrr": 0.546006,
+      "baseline_lrr": 0.588596
+    },
+    {
+      "sample_index": 1215,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf bacterial spot\\Tomato leaf bacterial spot (22).jpg",
+      "class_name": "Tomato leaf bacterial spot",
+      "lrr": 0.868985,
+      "baseline_lrr": 0.191169
+    },
+    {
+      "sample_index": 1259,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf late blight\\Tomato leaf late blight (1).jpg",
+      "class_name": "Tomato leaf late blight",
+      "lrr": 0.816462,
+      "baseline_lrr": 0.641634
+    },
+    {
+      "sample_index": 1264,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf late blight\\Tomato leaf late blight (12).jpg",
+      "class_name": "Tomato leaf late blight",
+      "lrr": 0.841493,
+      "baseline_lrr": 0.539735
+    },
+    {
+      "sample_index": 1269,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf late blight\\Tomato leaf late blight (17).jpg",
+      "class_name": "Tomato leaf late blight",
+      "lrr": 0.921974,
+      "baseline_lrr": 0.612169
+    },
+    {
+      "sample_index": 1272,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf late blight\\Tomato leaf late blight (19).jpg",
+      "class_name": "Tomato leaf late blight",
+      "lrr": 0.512259,
+      "baseline_lrr": 0.661688
+    },
+    {
+      "sample_index": 1344,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf mosaic virus\\Tomato leaf mosaic virus (19).jpg",
+      "class_name": "Tomato leaf mosaic virus",
+      "lrr": 0.976639,
+      "baseline_lrr": 0.629202
+    },
+    {
+      "sample_index": 1353,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf mosaic virus\\Tomato leaf mosaic virus (21).jpg",
+      "class_name": "Tomato leaf mosaic virus",
+      "lrr": 0.979832,
+      "baseline_lrr": 0.591016
+    },
+    {
+      "sample_index": 1358,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf mosaic virus\\Tomato leaf mosaic virus (23).jpg",
+      "class_name": "Tomato leaf mosaic virus",
+      "lrr": 0.996893,
+      "baseline_lrr": 0.71137
+    },
+    {
+      "sample_index": 1363,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf mosaic virus\\Tomato leaf mosaic virus (39).jpg",
+      "class_name": "Tomato leaf mosaic virus",
+      "lrr": 0.978771,
+      "baseline_lrr": 0.187729
+    },
+    {
+      "sample_index": 1375,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf yellow virus\\Tomato leaf yellow virus (14).jpg",
+      "class_name": "Tomato leaf yellow virus",
+      "lrr": 0.946937,
+      "baseline_lrr": 0.686757
+    },
+    {
+      "sample_index": 1377,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf yellow virus\\Tomato leaf yellow virus (20).jpg",
+      "class_name": "Tomato leaf yellow virus",
+      "lrr": 0.953943,
+      "baseline_lrr": 0.636307
+    },
+    {
+      "sample_index": 1383,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf yellow virus\\Tomato leaf yellow virus (27).jpg",
+      "class_name": "Tomato leaf yellow virus",
+      "lrr": 0.924227,
+      "baseline_lrr": 0.456597
+    },
+    {
+      "sample_index": 1387,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato leaf yellow virus\\Tomato leaf yellow virus (29).jpg",
+      "class_name": "Tomato leaf yellow virus",
+      "lrr": 0.943255,
+      "baseline_lrr": 0.604954
+    },
+    {
+      "sample_index": 1412,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato mold leaf\\Tomato mold leaf (1).jpg",
+      "class_name": "Tomato mold leaf",
+      "lrr": 0.913088,
+      "baseline_lrr": 0.404673
+    },
+    {
+      "sample_index": 1417,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato mold leaf\\Tomato mold leaf (14).jpg",
+      "class_name": "Tomato mold leaf",
+      "lrr": 0.940706,
+      "baseline_lrr": 0.651665
+    },
+    {
+      "sample_index": 1419,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato mold leaf\\Tomato mold leaf (20).jpg",
+      "class_name": "Tomato mold leaf",
+      "lrr": 0.932056,
+      "baseline_lrr": 0.579041
+    },
+    {
+      "sample_index": 1422,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\Tomato mold leaf\\Tomato mold leaf (22).jpg",
+      "class_name": "Tomato mold leaf",
+      "lrr": 0.941411,
+      "baseline_lrr": 0.548357
+    },
+    {
+      "sample_index": 1468,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf\\grape leaf (21).jpg",
+      "class_name": "grape leaf",
+      "lrr": 0.984239,
+      "baseline_lrr": 0.53573
+    },
+    {
+      "sample_index": 1474,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf\\grape leaf (22).jpg",
+      "class_name": "grape leaf",
+      "lrr": 0.932986,
+      "baseline_lrr": 0.261825
+    },
+    {
+      "sample_index": 1481,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf\\grape leaf (31).jpg",
+      "class_name": "grape leaf",
+      "lrr": 0.990934,
+      "baseline_lrr": 0.441069
+    },
+    {
+      "sample_index": 1489,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf\\grape leaf (34).jpg",
+      "class_name": "grape leaf",
+      "lrr": 0.984458,
+      "baseline_lrr": 0.502355
+    },
+    {
+      "sample_index": 1525,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf black rot\\grape leaf black rot (21).jpg",
+      "class_name": "grape leaf black rot",
+      "lrr": 0.989292,
+      "baseline_lrr": 0.077672
+    },
+    {
+      "sample_index": 1533,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf black rot\\grape leaf black rot (22).jpg",
+      "class_name": "grape leaf black rot",
+      "lrr": 0.963726,
+      "baseline_lrr": 0.624813
+    },
+    {
+      "sample_index": 1539,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf black rot\\grape leaf black rot (34).jpg",
+      "class_name": "grape leaf black rot",
+      "lrr": 0.991798,
+      "baseline_lrr": 0.583759
+    },
+    {
+      "sample_index": 1543,
+      "image_path": "c:\\CropGuard v3\\augmented_plantdoc_clean\\test\\grape leaf black rot\\grape leaf black rot (36).jpg",
+      "class_name": "grape leaf black rot",
+      "lrr": 0.824362,
+      "baseline_lrr": 0.589804
+    }
+  ]
+}

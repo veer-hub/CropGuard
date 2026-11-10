@@ -1,0 +1,673 @@
+{
+  "metadata": {
+    "generator": "sanitize_plantdoc_splits.py",
+    "timestamp": "2026-10-11T11:54:35.750271+00:00",
+    "source_directory": "c:\\CropGuard v3\\augmented_plantdoc",
+    "target_directory": "c:\\CropGuard v3\\augmented_plantdoc_clean",
+    "random_seed": 47,
+    "target_split_ratios": {
+      "train": 0.7,
+      "val": 0.15,
+      "test": 0.15
+    }
+  },
+  "dataset_summary": {
+    "total_classes": 27,
+    "raw_scanned_files": 10810,
+    "redundant_cross_split_duplicates_removed": 518,
+    "unique_clean_images": 10292,
+    "unique_canonical_base_leaf_ids": 2304,
+    "materialization_method": {
+      "hard_links": 10292,
+      "file_copies": 0
+    }
+  },
+  "partition_totals": {
+    "train": {
+      "image_count": 7158,
+      "image_percentage": 69.55,
+      "base_id_count": 1599,
+      "base_id_percentage": 69.4
+    },
+    "val": {
+      "image_count": 1546,
+      "image_percentage": 15.02,
+      "base_id_count": 345,
+      "base_id_percentage": 14.97
+    },
+    "test": {
+      "image_count": 1588,
+      "image_percentage": 15.43,
+      "base_id_count": 360,
+      "base_id_percentage": 15.62
+    }
+  },
+  "zero_leakage_audit": {
+    "train_val_base_overlap": 0,
+    "train_test_base_overlap": 0,
+    "val_test_base_overlap": 0,
+    "zero_leakage_verified": true,
+    "all_classes_present_in_train": true,
+    "all_classes_present_in_val": true,
+    "all_classes_present_in_test": true
+  },
+  "formerly_missing_classes_resolution": {
+    "Tomato leaf mosaic virus": {
+      "prior_state": "280 images in train, 0 in val, 0 in test",
+      "sanitized_state": {
+        "total_images": 280,
+        "total_base_ids": 43,
+        "train": {
+          "images": 190,
+          "base_ids": 30
+        },
+        "val": {
+          "images": 45,
+          "base_ids": 6
+        },
+        "test": {
+          "images": 45,
+          "base_ids": 7
+        },
+        "leakage": {
+          "train_val_base_overlap": 0,
+          "train_test_base_overlap": 0,
+          "val_test_base_overlap": 0
+        }
+      }
+    },
+    "Tomato leaf yellow virus": {
+      "prior_state": "280 images in train, 0 in val, 0 in test",
+      "sanitized_state": {
+        "total_images": 280,
+        "total_base_ids": 68,
+        "train": {
+          "images": 201,
+          "base_ids": 47
+        },
+        "val": {
+          "images": 42,
+          "base_ids": 10
+        },
+        "test": {
+          "images": 37,
+          "base_ids": 11
+        },
+        "leakage": {
+          "train_val_base_overlap": 0,
+          "train_test_base_overlap": 0,
+          "val_test_base_overlap": 0
+        }
+      }
+    }
+  },
+  "per_class_breakdown": {
+    "Apple Scab Leaf": {
+      "total_images": 385,
+      "total_base_ids": 77,
+      "train": {
+        "images": 269,
+        "base_ids": 53
+      },
+      "val": {
+        "images": 58,
+        "base_ids": 12
+      },
+      "test": {
+        "images": 58,
+        "base_ids": 12
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Apple leaf": {
+      "total_images": 366,
+      "total_base_ids": 81,
+      "train": {
+        "images": 260,
+        "base_ids": 56
+      },
+      "val": {
+        "images": 61,
+        "base_ids": 12
+      },
+      "test": {
+        "images": 45,
+        "base_ids": 13
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Apple rust leaf": {
+      "total_images": 397,
+      "total_base_ids": 79,
+      "train": {
+        "images": 280,
+        "base_ids": 55
+      },
+      "val": {
+        "images": 55,
+        "base_ids": 12
+      },
+      "test": {
+        "images": 62,
+        "base_ids": 12
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Bell_pepper leaf": {
+      "total_images": 390,
+      "total_base_ids": 53,
+      "train": {
+        "images": 268,
+        "base_ids": 37
+      },
+      "val": {
+        "images": 60,
+        "base_ids": 8
+      },
+      "test": {
+        "images": 62,
+        "base_ids": 8
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Bell_pepper leaf spot": {
+      "total_images": 380,
+      "total_base_ids": 62,
+      "train": {
+        "images": 265,
+        "base_ids": 43
+      },
+      "val": {
+        "images": 56,
+        "base_ids": 9
+      },
+      "test": {
+        "images": 59,
+        "base_ids": 10
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Blueberry leaf": {
+      "total_images": 385,
+      "total_base_ids": 105,
+      "train": {
+        "images": 274,
+        "base_ids": 73
+      },
+      "val": {
+        "images": 54,
+        "base_ids": 16
+      },
+      "test": {
+        "images": 57,
+        "base_ids": 16
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Cherry leaf": {
+      "total_images": 369,
+      "total_base_ids": 47,
+      "train": {
+        "images": 252,
+        "base_ids": 32
+      },
+      "val": {
+        "images": 46,
+        "base_ids": 7
+      },
+      "test": {
+        "images": 71,
+        "base_ids": 8
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Corn Gray leaf spot": {
+      "total_images": 401,
+      "total_base_ids": 64,
+      "train": {
+        "images": 271,
+        "base_ids": 44
+      },
+      "val": {
+        "images": 67,
+        "base_ids": 10
+      },
+      "test": {
+        "images": 63,
+        "base_ids": 10
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Corn leaf blight": {
+      "total_images": 392,
+      "total_base_ids": 176,
+      "train": {
+        "images": 269,
+        "base_ids": 123
+      },
+      "val": {
+        "images": 55,
+        "base_ids": 26
+      },
+      "test": {
+        "images": 68,
+        "base_ids": 27
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Corn rust leaf": {
+      "total_images": 400,
+      "total_base_ids": 106,
+      "train": {
+        "images": 285,
+        "base_ids": 74
+      },
+      "val": {
+        "images": 56,
+        "base_ids": 16
+      },
+      "test": {
+        "images": 59,
+        "base_ids": 16
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Peach leaf": {
+      "total_images": 335,
+      "total_base_ids": 99,
+      "train": {
+        "images": 242,
+        "base_ids": 69
+      },
+      "val": {
+        "images": 45,
+        "base_ids": 15
+      },
+      "test": {
+        "images": 48,
+        "base_ids": 15
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Potato leaf early blight": {
+      "total_images": 395,
+      "total_base_ids": 109,
+      "train": {
+        "images": 277,
+        "base_ids": 76
+      },
+      "val": {
+        "images": 65,
+        "base_ids": 16
+      },
+      "test": {
+        "images": 53,
+        "base_ids": 17
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Potato leaf late blight": {
+      "total_images": 387,
+      "total_base_ids": 97,
+      "train": {
+        "images": 270,
+        "base_ids": 67
+      },
+      "val": {
+        "images": 61,
+        "base_ids": 15
+      },
+      "test": {
+        "images": 56,
+        "base_ids": 15
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Raspberry leaf": {
+      "total_images": 408,
+      "total_base_ids": 109,
+      "train": {
+        "images": 283,
+        "base_ids": 76
+      },
+      "val": {
+        "images": 60,
+        "base_ids": 16
+      },
+      "test": {
+        "images": 65,
+        "base_ids": 17
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Soyabean leaf": {
+      "total_images": 405,
+      "total_base_ids": 57,
+      "train": {
+        "images": 274,
+        "base_ids": 39
+      },
+      "val": {
+        "images": 66,
+        "base_ids": 9
+      },
+      "test": {
+        "images": 65,
+        "base_ids": 9
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Squash Powdery mildew leaf": {
+      "total_images": 400,
+      "total_base_ids": 123,
+      "train": {
+        "images": 277,
+        "base_ids": 86
+      },
+      "val": {
+        "images": 66,
+        "base_ids": 18
+      },
+      "test": {
+        "images": 57,
+        "base_ids": 19
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Strawberry leaf": {
+      "total_images": 398,
+      "total_base_ids": 88,
+      "train": {
+        "images": 280,
+        "base_ids": 61
+      },
+      "val": {
+        "images": 56,
+        "base_ids": 13
+      },
+      "test": {
+        "images": 62,
+        "base_ids": 14
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato Early blight leaf": {
+      "total_images": 386,
+      "total_base_ids": 74,
+      "train": {
+        "images": 266,
+        "base_ids": 51
+      },
+      "val": {
+        "images": 61,
+        "base_ids": 11
+      },
+      "test": {
+        "images": 59,
+        "base_ids": 12
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato Septoria leaf spot": {
+      "total_images": 399,
+      "total_base_ids": 136,
+      "train": {
+        "images": 271,
+        "base_ids": 95
+      },
+      "val": {
+        "images": 61,
+        "base_ids": 20
+      },
+      "test": {
+        "images": 67,
+        "base_ids": 21
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato leaf": {
+      "total_images": 390,
+      "total_base_ids": 54,
+      "train": {
+        "images": 258,
+        "base_ids": 37
+      },
+      "val": {
+        "images": 64,
+        "base_ids": 8
+      },
+      "test": {
+        "images": 68,
+        "base_ids": 9
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato leaf bacterial spot": {
+      "total_images": 395,
+      "total_base_ids": 98,
+      "train": {
+        "images": 282,
+        "base_ids": 68
+      },
+      "val": {
+        "images": 58,
+        "base_ids": 15
+      },
+      "test": {
+        "images": 55,
+        "base_ids": 15
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato leaf late blight": {
+      "total_images": 394,
+      "total_base_ids": 101,
+      "train": {
+        "images": 266,
+        "base_ids": 70
+      },
+      "val": {
+        "images": 57,
+        "base_ids": 15
+      },
+      "test": {
+        "images": 71,
+        "base_ids": 16
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato leaf mosaic virus": {
+      "total_images": 280,
+      "total_base_ids": 43,
+      "train": {
+        "images": 190,
+        "base_ids": 30
+      },
+      "val": {
+        "images": 45,
+        "base_ids": 6
+      },
+      "test": {
+        "images": 45,
+        "base_ids": 7
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato leaf yellow virus": {
+      "total_images": 280,
+      "total_base_ids": 68,
+      "train": {
+        "images": 201,
+        "base_ids": 47
+      },
+      "val": {
+        "images": 42,
+        "base_ids": 10
+      },
+      "test": {
+        "images": 37,
+        "base_ids": 11
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "Tomato mold leaf": {
+      "total_images": 393,
+      "total_base_ids": 85,
+      "train": {
+        "images": 272,
+        "base_ids": 59
+      },
+      "val": {
+        "images": 65,
+        "base_ids": 13
+      },
+      "test": {
+        "images": 56,
+        "base_ids": 13
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "grape leaf": {
+      "total_images": 395,
+      "total_base_ids": 57,
+      "train": {
+        "images": 283,
+        "base_ids": 39
+      },
+      "val": {
+        "images": 55,
+        "base_ids": 9
+      },
+      "test": {
+        "images": 57,
+        "base_ids": 9
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    },
+    "grape leaf black rot": {
+      "total_images": 387,
+      "total_base_ids": 56,
+      "train": {
+        "images": 273,
+        "base_ids": 39
+      },
+      "val": {
+        "images": 51,
+        "base_ids": 8
+      },
+      "test": {
+        "images": 63,
+        "base_ids": 9
+      },
+      "leakage": {
+        "train_val_base_overlap": 0,
+        "train_test_base_overlap": 0,
+        "val_test_base_overlap": 0
+      }
+    }
+  }
+}
