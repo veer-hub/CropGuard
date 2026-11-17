@@ -28,8 +28,16 @@ from transformers import AutoModel
 from peft import LoraConfig, get_peft_model
 from sklearn.metrics import f1_score, accuracy_score, classification_report
 
-import albumentations as A
-from albumentations.pytorch import ToTensorV2
+import torchvision.transforms as T
+
+try:
+    import albumentations as A
+    from albumentations.pytorch import ToTensorV2
+    _HAS_ALBUMENTATIONS = True
+except (ImportError, OSError):
+    A = None
+    ToTensorV2 = None
+    _HAS_ALBUMENTATIONS = False
 
 # Add parent directory for utils import
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -50,47 +58,74 @@ logger = logging.getLogger("CropGuardTrainer")
 # 1. Dataset & Data Augmentation
 # ==============================================================================
 
-def get_train_transforms(image_size: int = 224) -> A.Compose:
-    """Dynamic Albumentations augmentations for in-the-wild agricultural robustness."""
-    return A.Compose([
-        A.Resize(image_size, image_size),
-        A.HorizontalFlip(p=0.5),
-        A.VerticalFlip(p=0.5),
-        A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1, p=0.5),
-        A.ShiftScaleRotate(
-            shift_limit=0.05,
-            scale_limit=0.1,
-            rotate_limit=15,
-            border_mode=0,
-            p=0.5,
-        ),
-        A.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225],
-        ),
-        ToTensorV2(),
-    ])
+class _TorchvisionAlbumentationsWrapper:
+    """Drop-in torchvision fallback matching Albumentations dict call signature."""
+
+    def __init__(self, tf: T.Compose):
+        self.tf = tf
+
+    def __call__(self, image: np.ndarray) -> Dict[str, torch.Tensor]:
+        pil_img = Image.fromarray(image) if isinstance(image, np.ndarray) else image
+        return {"image": self.tf(pil_img)}
 
 
-def get_val_transforms(image_size: int = 224) -> A.Compose:
+def get_train_transforms(image_size: int = 224) -> Any:
+    """Dynamic augmentations for in-the-wild agricultural robustness."""
+    if _HAS_ALBUMENTATIONS:
+        return A.Compose([
+            A.Resize(image_size, image_size),
+            A.HorizontalFlip(p=0.5),
+            A.VerticalFlip(p=0.5),
+            A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1, p=0.5),
+            A.ShiftScaleRotate(
+                shift_limit=0.05,
+                scale_limit=0.1,
+                rotate_limit=15,
+                border_mode=0,
+                p=0.5,
+            ),
+            A.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225],
+            ),
+            ToTensorV2(),
+        ])
+    return _TorchvisionAlbumentationsWrapper(T.Compose([
+        T.Resize((image_size, image_size)),
+        T.RandomHorizontalFlip(p=0.5),
+        T.RandomVerticalFlip(p=0.5),
+        T.RandomApply([T.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1)], p=0.5),
+        T.RandomApply([T.RandomAffine(degrees=15, translate=(0.05, 0.05), scale=(0.9, 1.1))], p=0.5),
+        T.ToTensor(),
+        T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ]))
+
+
+def get_val_transforms(image_size: int = 224) -> Any:
     """Validation and testing deterministic transforms."""
-    return A.Compose([
-        A.Resize(image_size, image_size),
-        A.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225],
-        ),
-        ToTensorV2(),
-    ])
+    if _HAS_ALBUMENTATIONS:
+        return A.Compose([
+            A.Resize(image_size, image_size),
+            A.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225],
+            ),
+            ToTensorV2(),
+        ])
+    return _TorchvisionAlbumentationsWrapper(T.Compose([
+        T.Resize((image_size, image_size)),
+        T.ToTensor(),
+        T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ]))
 
 
 class PlantDocCleanDataset(Dataset):
-    """Zero-leakage PlantDoc dataset loader supporting Albumentations transforms."""
+    """Zero-leakage PlantDoc dataset loader supporting Albumentations-compatible transforms."""
 
     def __init__(
         self,
         split_dir: Path,
-        transform: Optional[A.Compose] = None,
+        transform: Optional[Any] = None,
         class_to_idx: Optional[Dict[str, int]] = None,
     ):
         self.split_dir = Path(split_dir)

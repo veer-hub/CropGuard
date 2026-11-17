@@ -21,9 +21,10 @@ test_link.py
 
 # Large Model Weights (>1.2 GB per checkpoint - exceeds GitHub 100MB limit)
 checkpoints/**/*.pt
-# Keep the lightweight 706 KB validation/test logits cache & training history
+# Keep the lightweight validation/test logits caches & training history
 !checkpoints/dinov2_lora/logits_cache.pt
 !checkpoints/dinov2_lora/training_history.jsonl
+!checkpoints/cross_domain_pv/cross_domain_logits_cache.pt
 
 # Raw Image Datasets (9.75 GB / 184,000+ images)
 plantvillage dataset/

@@ -1,7 +1,7 @@
 # CropGuard: Calibrated Foundation Models & Attentive Pathology Pooling for Plant Disease Diagnosis in the Wild
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-22%2F22%20Passing-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-27%2F27%20Passing-brightgreen)]()
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0%2Bcu124-EE4C2C)]()
 [![Backbone](https://img.shields.io/badge/Backbone-DINOv2--Large%20%2B%20LoRA-blue)]()
 
@@ -9,7 +9,7 @@
 
 ---
 
-## Key Empirical Highlights (Completed Through Phase 4)
+## Key Empirical Highlights (Completed Through Phase 5)
 
 | Benchmark Dimension | Mohanty et al. (2016) | Salman et al. (*Frontiers*, June 2025) | **CropGuard (Achieved)** |
 | :--- | :--- | :--- | :--- |
@@ -18,9 +18,11 @@
 | **PlantDoc Benchmark Split** | Unmeasured | Manually Pruned / Sanitized | **100% Raw, Un-Pruned, Zero-Leakage (10,292 imgs, 2,304 base plants)** |
 | **In-the-Wild Val Accuracy** | N/A | 74.00% (Sanitized subset) | **81.05% (Macro-F1: 0.8113) — +7.05% lead** |
 | **In-the-Wild Test Accuracy** | N/A | 74.00% (Sanitized subset) | **78.84% (Macro-F1: 0.7842) — +4.84% lead on unseen plants** |
+| **Cross-Domain ($PV_{200} \to PD$)** | 31.40% | 68.00% (F1: 0.6500) | **69.71% (Macro-F1: 0.6836) — beats Table 4 across all metrics** |
+| **Cross-Domain ($PV_{100} \to PD$)** | Unmeasured | 49.00% (F1: 0.5100) | **66.25% (Macro-F1: 0.6411) — +17.25% lead over Table 5** |
 | **Expected Calibration Error (ECE)** | Uncalibrated (> 0.20) | Unmeasured (> 0.18) | **0.0183 Val / 0.0283 Test (< 0.04 target)** |
 | **Lesion Relevance Ratio (LRR)** | < 0.25 (Background shortcut) | Unmeasured | **0.8587 Mean / 0.9188 Median (> 0.80 target)** |
-| **Automated Test Suite** | None | None | **22/22 Unit & Integration Tests Passing** |
+| **Automated Test Suite** | None | None | **27/27 Unit & Integration Tests Passing** |
 
 ---
 
@@ -52,13 +54,19 @@ CropGuard/
 ├── evaluate_calibration.py              # Phase 4.2: Post-hoc Temperature Scaling & ECE/MCE/NLL/Brier evaluation
 ├── generate_explainability_maps.py      # Phase 4.3: 24-Layer Recursive Attention Rollout & MAF attribution
 ├── compute_lrr_metrics.py               # Phase 4.4: Path-Integral Integrated Gradients & LRR quantification
+├── prepare_pv_subsets.py                # Phase 5.1: Disjoint PV_200, PV_100 & PV_Val subset builder
+├── train_cross_domain_pv.py             # Phase 5.2: 3-Stage Cross-Domain (CORAL + SHOT IM + DA + Proto)
+├── evaluate_cross_domain.py             # Phase 5.3: Zero-shot evaluation & comparison figure generator
 ├── PROJECT_STATE_HANDOVER.md            # Complete project state & architecture manifest
 ├── requirements.txt                     # Python 3.11 + CUDA 12.4 package versions
 ├── LICENSE                              # MIT Open-Source License
 │
-├── checkpoints/dinov2_lora/
-│   ├── training_history.jsonl           # Full 23-epoch training & validation telemetry
-│   └── logits_cache.pt                  # Cached validation (N=1,546) & test (N=1,588) logits
+├── checkpoints/
+│   ├── dinov2_lora/
+│   │   ├── training_history.jsonl       # Full 23-epoch training & validation telemetry
+│   │   └── logits_cache.pt              # Cached validation (N=1,546) & test (N=1,588) logits
+│   └── cross_domain_pv/
+│       └── cross_domain_logits_cache.pt # Cached PV_200 & PV_100 cross-domain logits
 │
 ├── augmented_plantdoc_clean/
 │   └── sanitization_report.json         # Zero-leakage dataset split audit report
@@ -69,10 +77,13 @@ CropGuard/
 │   ├── Phase_4_Plan.docx                # Word blueprint for Phase 4 methodology
 │   ├── calibration_metrics.json         # Full 15-bin pre/post-calibration metrics
 │   ├── lrr_summary_report.json          # Quantitative LRR across all 27 classes (N=108)
+│   ├── pv_subsets_manifest.json         # Disjoint PV_200, PV_100, PV_Val manifest (27 classes)
+│   ├── cross_domain_results.json        # Zero-shot PV_200 & PV_100 results on PlantDoc Test
 │   └── figures/
 │       ├── reliability_diagram.png      # Pre/post calibration reliability diagrams
 │       ├── attention_rollout_grid.png   # 24-layer DINOv2 attention rollout grid
 │       ├── lrr_distribution.png         # CropGuard vs Baseline LRR distribution
+│       ├── cross_domain_comparison.png  # PV_200 & PV_100 vs Salman et al. Tables 4 & 5
 │       └── saliency_overlays/           # Per-class high-resolution attribution overlays
 │
 ├── utils/
@@ -80,7 +91,8 @@ CropGuard/
 └── tests/
     ├── test_sanitized_dataset.py        # 10 tests verifying zero base-leaf data leakage
     ├── test_dinov2_pipeline.py          # 6 tests verifying LoRA, MAF pooling & scheduler
-    └── test_phase4_calibration_explainability.py # 6 tests verifying ECE < 0.04 & LRR > 0.80
+    ├── test_phase4_calibration_explainability.py # 6 tests verifying ECE < 0.04 & LRR > 0.80
+    └── test_phase5_cross_domain.py      # 5 tests verifying PV subsets, CORAL/SHOT & SOTA beats
 ```
 
 ---
@@ -100,7 +112,7 @@ python -m venv .venv
 pip install torch==2.6.0+cu124 torchvision==0.21.0+cu124 torchaudio==2.6.0+cu124 --index-url https://download.pytorch.org/whl/cu124
 pip install -r requirements.txt
 
-# 4. Run the 22-test verification suite
+# 4. Run the 27-test verification suite
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 

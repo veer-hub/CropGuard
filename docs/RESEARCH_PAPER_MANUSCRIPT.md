@@ -192,7 +192,23 @@ Evaluating Path-Integral Integrated Gradients ($K=8$ steps) coupled with 24-laye
 
 With **85.87% mean attribution energy** (and **91.88% median attribution energy**) concentrated strictly within diseased leaf tissue and necrotic lesions (versus $51.48\%$ for unpooled baseline gradients evaluated on the exact same image-only mask), CropGuard v3 mathematically refutes the "Clever Hans" shortcut-learning hypothesis.
 
-### 5.4 Comparative Evaluation Matrix
+### 5.4 Cross-Domain Laboratory-to-Field Transfer ($PV_{200}$ & $PV_{100} \to$ PlantDoc, Phase 5 Verification)
+To directly challenge Salman et al.'s cross-domain claims (Tables 4 & 5), we constructed strictly balanced, diversity-sampled PlantVillage subsets across all 27 aligned classes (`docs/pv_subsets_manifest.json`): $PV_{200}$ ($5,400$ train images), $PV_{100}$ ($2,700$ train images), and a disjoint $PV_{\text{val}}$ ($1,350$ validation images). All models were evaluated zero-shot on the full, un-pruned, zero-leakage PlantDoc test set (`augmented_plantdoc_clean/test`, $N=1,588$, 27 classes), with results saved in `docs/cross_domain_results.json` and visualized in `docs/figures/cross_domain_comparison.png`:
+
+| Training Subset | Model / Ablation Stage | Test Accuracy | Macro-F1 | Macro-Precision | Macro-Recall |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **$PV_{200}$ (200/cls)** | Salman et al. (ViT-MoE, Sanitized PD) | $68.00\%$ | $0.6500$ | $0.6700$ | $0.6400$ |
+| **$PV_{200}$ (200/cls)** | CropGuard v3 Stage A (Raw Lab ERM) | $51.01\%$ | $0.4800$ | $0.5464$ | $0.5011$ |
+| **$PV_{200}$ (200/cls)** | CropGuard v3 Stage B (Seg BG Rand + MAF) | $59.00\%$ | $0.5546$ | $0.5701$ | $0.5795$ |
+| **$PV_{200}$ (200/cls)** | **CropGuard v3 Stage C (Full Domain-Adaptive)** | **69.71%** | **0.6836** | **0.6981** | **0.6909** |
+| **$PV_{100}$ (100/cls)** | Salman et al. (ViT-MoE, Sanitized PD) | $49.00\%$ | $0.5100$ | $0.5300$ | $0.4900$ |
+| **$PV_{100}$ (100/cls)** | CropGuard v3 Stage A (Raw Lab ERM) | $50.82\%$ | $0.4640$ | $0.4750$ | $0.4984$ |
+| **$PV_{100}$ (100/cls)** | CropGuard v3 Stage B (Seg BG Rand + MAF) | $58.44\%$ | $0.5547$ | $0.6066$ | $0.5728$ |
+| **$PV_{100}$ (100/cls)** | **CropGuard v3 Stage C (Full Domain-Adaptive)** | **66.25%** | **0.6411** | **0.6386** | **0.6558** |
+
+Crucially, **CropGuard v3 surpasses Salman et al. (2025) across every single cross-domain metric** even while evaluated on the **un-pruned, full 27-class PlantDoc test set**: $+1.71\%$ Accuracy and $+0.0336$ Macro-F1 on $PV_{200}$, and a massive **$+17.25\%$ Accuracy and $+0.1311$ Macro-F1** lead under the data-scarce $PV_{100}$ regime.
+
+### 5.5 Comparative Evaluation Matrix
 
 | Dimension | Mohanty et al. (2016) | Salman et al. (2025) | CropGuard v3 (Achieved) |
 | :--- | :--- | :--- | :--- |
@@ -202,7 +218,8 @@ With **85.87% mean attribution energy** (and **91.88% median attribution energy*
 | **PlantDoc Data Split** | Unmeasured | Cherry-picked / Sanitized | **100% Raw, Zero-Leakage (10,292 imgs)** |
 | **In-the-Wild Val Accuracy** | N/A | 74.00% (Sanitized PD) | **81.05% (Raw Zero-Leakage PD, Macro-F1: 0.8113)** |
 | **In-the-Wild Test Accuracy**| N/A | 74.00% (Sanitized PD) | **78.84% (Raw Zero-Leakage PD, Macro-F1: 0.7842)** |
-| **Cross-Domain ($PV_{200} \to PD$)** | 31.40% | 68.00% (Sanitized PD) | **Target: > 75.00% (Raw PD)** |
+| **Cross-Domain ($PV_{200} \to PD$)** | 31.40% | 68.00% (Sanitized PD) | **69.71% (Raw PD, Macro-F1: 0.6836)** |
+| **Cross-Domain ($PV_{100} \to PD$)** | Unmeasured | 49.00% (Sanitized PD) | **66.25% (Raw PD, Macro-F1: 0.6411)** |
 | **Attribution Ratio (LRR)** | < 0.25 (Background bias) | < 0.50 (Unmeasured) | **0.8587 Mean / 0.9188 Median (> 0.80 Target)** |
 | **Expected Calibration Error** | Uncalibrated (>0.20) | Uncalibrated (>0.18) | **0.0183 Val / 0.0283 Test (< 0.04 Target)** |
 | **Multi-Disease Capability** | Single label | Discarded multi-symptom | **Simultaneous multi-lesion bounding boxes** |
@@ -211,6 +228,6 @@ With **85.87% mean attribution energy** (and **91.88% median attribution energy*
 ---
 
 ## 6. Conclusion
-By exposing the mathematical flaws and evaluation biases of prior art, establishing the first strictly disjoint zero-leakage benchmark, and uniting self-supervised foundation representations with Multi-Head Attentive Pathology Pooling, post-hoc temperature calibration ($\text{ECE} = 0.0283$), and verified lesion attribution ($\text{LRR} = 0.8587$), CropGuard v3 decisively outperforms published state-of-the-art benchmarks on in-the-wild agricultural pathology.
+By exposing the mathematical flaws and evaluation biases of prior art, establishing the first strictly disjoint zero-leakage benchmark, and uniting self-supervised foundation representations with Multi-Head Attentive Pathology Pooling, post-hoc temperature calibration ($\text{ECE} = 0.0283$), verified lesion attribution ($\text{LRR} = 0.8587$), and cross-domain transfer ($69.71\%$ on $PV_{200}$, $66.25\%$ on $PV_{100}$), CropGuard v3 decisively outperforms published state-of-the-art benchmarks on in-the-wild agricultural pathology.
 
 
