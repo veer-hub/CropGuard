@@ -6,6 +6,7 @@ __pycache__/
 *.tmp
 
 # University MTE / Non-Project Scratch Files
+unrelated/
 MTE/
 mte/
 mte_guidelines_extracted.txt
